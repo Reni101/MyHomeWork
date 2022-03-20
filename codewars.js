@@ -1,5 +1,5 @@
 let numbers = ["Zero", "One", "Two", "Three","Four", 
-				"Five", "Six", "Seven", "Eight", "Nine"];
+	      "Five", "Six", "Seven", "Eight", "Nine"];
 var result;			
 	
 function switchItUp(val,result ) {
