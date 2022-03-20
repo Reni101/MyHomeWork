@@ -10,5 +10,5 @@ function switchItUp(val,result ) {
 	}
 }
 
-switchItUp(numbers, 9);
+switchItUp(numbers, 5);
 
