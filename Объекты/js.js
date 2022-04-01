@@ -71,6 +71,8 @@ console.log( new SmallUser());   */
 console.log(a === b); // true, я  в шоке
  */
 
+/*
+
 function Calculator() {
 	this.read = function() {
 		this.a = +prompt('Введите первое число');
@@ -90,4 +92,56 @@ let calculator = new Calculator();
 calculator.read();
 
 alert( "Sum = " + calculator.sum() );
-alert( "Mul = " + calculator.mul() );
+alert( "Mul = " + calculator.mul() ); 
+
+
+*/
+
+//this.value += +prompt ("введите число");
+
+/* 
+function Accumulator(startingValue) {
+	this.value = startingValue;
+	this.read = function() {
+		this.num = +prompt("введите число");
+		this.value = this.num + +this.value 
+	}
+}
+
+let accumulator = new Accumulator(1);
+accumulator.read();
+accumulator.read();
+
+console.log(accumulator.value);
+
+let user = {}; // пользователь без адреса
+alert( user?.address?.street ); // undefined (без ошибки)
+
+let id = Symbol("id");
+alert(id.description); // id
+
+ */
+
+/* let user = {
+	name: "Вася"
+  };
+ let id = Symbol("id");
+  
+user[id] = 1; */
+  
+let user = {
+	name: "John",
+	money: 1000,
+  	// для хинта равного "string"
+	toString() {
+	  return `{name: "${this.name}"}`;
+	},
+  	// для хинта равного "number" или "default"
+	valueOf() {
+	  return this.money;
+	}
+  
+  };
+    alert(user); // toString -> {name: "John"}
+ // alert(+user); // valueOf -> 1000
+ // alert(user + 500);
