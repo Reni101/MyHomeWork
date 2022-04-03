@@ -86,7 +86,7 @@ while (i != 10) { // i < 10
 }
 /таму шо i не станет 10
 
-*/
+
 
 function random(min, max) {
 	return Math.floor(Math.random() * (max + 1 - min) + min);
@@ -94,7 +94,7 @@ function random(min, max) {
 }
 console.log(random(2,6))
 
-/*
+
 function randomInteger(min, max) {
 	// получить случайное число от (min-0.5) до (max+0.5)
 	let rand = min - 0.5 + Math.random() * (max - min + 1);
@@ -110,4 +110,81 @@ alert( randomInteger(1, 3) );
   }
 alert( randomInteger(1, 3) );
 
+
+Одинарные и двойные кавычки работают, по сути, одинаково, 
+а если использовать обратные кавычки, 
+то в такую строку мы сможем вставлять произвольные выражения, обернув их в ${…}:
+
+function sum(a, b) {
+	return a + b;
+  }
+alert(`1 + 2 = ${sum(1, 2)}.`);
+
+Ещё одно преимущество обратных кавычек — 
+они могут занимать более одной строки, вот так:
+let guestList = `Guests:
+ * John
+ * Pete
+ * Mary
+`;
+alert(guestList);
+
+
+
+Многострочные строки также можно создавать с помощью одинарных и двойных кавычек, 
+используя так называемый «символ перевода строки», который записывается как \n:
+
+let guestList = "Guests:\n * John\n * Pete\n * Mary";
+alert(guestList);
+
+Примеры с Юникодом:
+alert( "\u{1F60D}" );
+
+
+let str = "Hello";
+ console.log(str[0]);
+console.log(str[1]);
+console.log(str[2]);
+console.log(str.charAt(3));
+console.log(str[str.length - 1]); 
+
+//Квадратные скобки — современный способ получить символ, 
+//в то время как charAt существует в основном по историческим причинам.
+
+//Также можно перебрать строку посимвольно, используя for..of:
+
+for(let char of str) {
+	console.log(char);
+}
+
+//Можно создать новую строку и записать её в ту же самую переменную вместо старой.
+
+let str = 'Hi';
+str = 'h' + str[1]; // заменяем строку
+console.log( str ); // hi
+
+Поиск подстроки
+Существует несколько способов поиска подстроки.
+
+str.indexOf(substr, pos).
+
+Он ищет подстроку substr в строке str, начиная с позиции pos, и возвращает позицию, 
+на которой располагается совпадение, либо -1 при отсутствии совпадений.
+
+let str = 'Widget with id';
+console.log(str.indexOf("id", 4)); //поиск чувствителен к регистру
+
 */
+
+function foundPosition (str, target){
+let pos = 0;
+while (true) {
+	let foundPos = str.indexOf(target, pos);
+	if(foundPos == -1) break;
+
+	console.log(`Найдено тут: ${foundPos}`);
+	pos = foundPos +1;
+}
+};
+
+foundPosition("Ослик Иа-Иа посмотрел на виадук", "Иа" );
