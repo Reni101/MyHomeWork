@@ -174,7 +174,7 @@ str.indexOf(substr, pos).
 let str = 'Widget with id';
 console.log(str.indexOf("id", 4)); //поиск чувствителен к регистру
 
-*/
+
 
 function foundPosition (str, target){
 let pos = 0;
@@ -184,7 +184,242 @@ while (true) {
 
 	console.log(`Найдено тут: ${foundPos}`);
 	pos = foundPos +1;
-}
+	}
 };
-
 foundPosition("Ослик Иа-Иа посмотрел на виадук", "Иа" );
+ str.lastIndexOf(substr, position)
+Также есть похожий метод str.lastIndexOf(substr, position), который ищет с конца строки к её началу.
+
+Он используется тогда, когда нужно получить самое 
+последнее вхождение: перед концом строки или начинающееся 
+до (включительно) определённой позиции. 
+
+Более современный метод str.includes(substr, pos) возвращает true, 
+если в строке str есть подстрока substr, либо false, если нет.
+Необязательный второй аргумент str.includes позволяет 
+начать поиск с определённой позиции:
+
+console.log( "Widget with id".includes("Widget") ); // true
+
+Методы str.startsWith и str.endsWith проверяют, соответственно, начинается ли и заканчивается ли строка определённой строкой:
+
+
+
+console.log( "Widget".startsWith("id") ); // false, "Wid" — начало "Widget" а id середина
+console.log( "Widget".endsWith("get") ); // true, "get" — окончание "Widget"
+
+
+Получение подстроки
+В JavaScr/* ipt есть 3 метода для получения подстроки: substring, substr и slice.
+
+
+str.slice(start [, end])
+Возвращает часть строки от start до (не включая) end.
+Если аргумент end отсутствует, slice возвращает символы до конца строки
+Также для start/end можно задавать отрицательные значения. Это означает, что позиция определена как заданное количество символов с конца строки:
+
+let str = "stringify";
+// начинаем с позиции 4 справа, а заканчиваем на позиции 1 справа
+alert( str.slice(-4, -1) ); // gif
+
+let str = "stringify";
+console.log(str.slice(2,5))
+
+
+str.substring(start [, end])
+Возвращает часть строки между start и end (не включая) end.
+
+
+str.substr(start [, length])
+Возвращает часть строки от start длины length.
+
+В противоположность предыдущим методам, 
+этот позволяет указать длину вместо конечной позиции:
+let str = "stringify";
+// ring, получаем 4 символа, начиная с позиции 2
+alert( str.substr(2, 4) );
+
+str.codePointAt(pos)
+Возвращает код для символа, находящегося на позиции pos:
+// одна и та же буква в нижнем и верхнем регистре
+// будет иметь разные коды
+alert( "z".codePointAt(0) ); // 122
+alert( "Z".codePointAt(0) ); // 90
+
+String.fromCodePoint(code)
+Создаёт символ по его коду code
+
+
+
+
+function ucFirst(str) {
+	return str[0].toUpperCase() + str.slice(1);
+}
+
+//console.log(ucFirst("максим") );
+
+function checkSpam(str) {
+	let low = str.toLowerCase();
+	if(low.includes('viagra') || low.includes('xxx') ) {
+		return true;
+	} return false;
+}
+
+
+//console.log(checkSpam('buy ViAgRA now'));
+//console.log(checkSpam('free xxxxx') );
+//console.log(checkSpam("innocent rabbit") );
+
+
+function truncate(str, maxlength) {
+	let answer;
+	if(str.length > maxlength) {
+	answer= str.slice(0, maxlength - 3) + "...";
+		return answer;
+	} return str;
+} 
+
+//console.log(truncate("123456789", 8))
+
+
+function extractCurrencyValue(str) {
+	//return str.slice(1)
+	return parseInt(str)
+}
+
+console.log (extractCurrencyValue("120$"));
+
+push добавляет элемент в конец.
+pop удаляет последний элемент.
+shift удаляет из массива первый элемент и возвращает 
+unshift добавляет элемент в начало 
+
+arr.push(element1, ..., elementN)
+arr.pop()
+arr.shift
+arr.unshift
+
+
+let arr = new Array("Яблоко", "Груша", "и тд");
+ 
+let arr = ["Яблоко", "Апельсин", "Груша"];
+for (let i = 0; i < arr.length; i++) {
+  alert( arr[i] );
+}
+
+
+
+
+
+let fruits = ["Яблоко", "Апельсин", "Слива"];
+
+for (let fruit of fruits) {
+  console.log( fruit );
+}
+
+
+
+let styles = ["Джаз", "Блюз",]
+styles.push("Рок-н-ролл")
+styles[Math.floor((styles.length - 1) / 2)] = "Классика";
+
+console.log(styles.shift())
+styles.unshift("Рэп", "Регги")
+console.log(styles)
+
+
+let arr = ["a", "b"];
+arr.push(function() {
+  alert( this );
+})
+arr[2]() //У массива в итоге 3 элемента: сначала их было 2, плюс функция.
+
+
+
+
+Напишите функцию sumInput(), которая:
+
+Просит пользователя ввести значения, используя prompt и сохраняет их в массив.
+Заканчивает запрашивать значения, когда пользователь введёт не числовое значение, пустую строку или нажмёт «Отмена».
+Подсчитывает и возвращает сумму элементов массива.
+P.S. Ноль 0 – считается числом, не останавливайте ввод значений при вводе «0».
+
+
+
+function sumInput(){
+	let arr = [];
+
+	while(true){
+		let a = prompt("Введите число в массив");
+		if(a === "" || a === null || !isFinite(a)) break;
+
+		arr.push(+a)
+	}
+
+
+	let sum = 0;
+  		for (let number of numbers) {
+   		sum += number;
+  }
+ 	 return sum;
+}
+
+console.log(sumInput());
+
+
+
+let arr = ["Я", "изучаю", "JavaScript"];
+arr.splice(1, 1); // начиная с позиции 1, удалить 1 элемент
+// осталось ["Я", "JavaScript"]
+
+
+let arr = ["Я", "изучаю", "JavaScript", "прямо", "сейчас"];
+// удалить 3 первых элемента и заменить их другими
+arr.splice(0, 3, "Давай", "танцевать");
+// теперь ["Давай", "танцевать", "прямо", "сейчас"]
+
+
+splice возвращает массив из удалённых элементов:
+let arr = ["Я", "изучаю", "JavaScript", "прямо", "сейчас"];
+let removed = arr.splice(0, 2);
+alert( removed ); // "Я", "изучаю" <-- массив из удалённых элементов
+
+
+Метод splice также может вставлять элементы без удаления, 
+для этого достаточно установить deleteCount в 0:
+let arr = ["Я", "изучаю", "JavaScript"];
+// с позиции 2 удалить. 0 элементов вставить. "сложный", "язык"
+arr.splice(2, 0, "сложный", "язык");
+alert( arr ); // "Я", "изучаю", "сложный", "язык", "JavaScript"
+
+
+let arr = ["t", "e", "s", "t"];
+alert( arr.slice(1, 3) ); // e,s (копирует с 1 до 3)
+alert( arr.slice(-2) ); // s,t (копирует с -2 до конца)
+	
+
+Перебор: forEach
+
+Метод arr.forEach позволяет запускать функцию для каждого элемента массива.
+
+Его синтаксис:
+
+arr.forEach(function(item, index, array) {
+  // ... делать что-то с item
+});
+
+["Bilbo", "Gandalf", "Nazgul"].forEach(alert);
+
+Поиск в массиве
+
+indexOf/lastIndexOf и includes
+arr.indexOf(item, from) ищет item, начиная с индекса from, и возвращает индекс, на котором был найден искомый элемент, в противном случае -1.
+arr.lastIndexOf(item, from) – то же самое, но ищет справа налево.
+arr.includes(item, from) – ищет item, начиная с индекса from, и возвращает true, если поиск успешен.
+
+*/
+
+let result = arr.find(function(item, index, array) {
+	// если true - возвращается текущий элемент и перебор прерывается
+	// если все итерации оказались ложными, возвращается undefined
+  });
