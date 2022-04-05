@@ -408,7 +408,7 @@ arr.forEach(function(item, index, array) {
   // ... делать что-то с item
 });
 
-["Bilbo", "Gandalf", "Nazgul"].forEach(alert);
+["Bilbo", "Gandalf", "Nazgul"].forEach(console.log);
 
 Поиск в массиве
 
@@ -417,9 +417,65 @@ arr.indexOf(item, from) ищет item, начиная с индекса from, и
 arr.lastIndexOf(item, from) – то же самое, но ищет справа налево.
 arr.includes(item, from) – ищет item, начиная с индекса from, и возвращает true, если поиск успешен.
 
-*/
+
 
 let result = arr.find(function(item, index, array) {
 	// если true - возвращается текущий элемент и перебор прерывается
 	// если все итерации оказались ложными, возвращается undefined
   });
+
+  let users = [
+	{id: 1, name: "Вася"},
+	{id: 2, name: "Петя"},
+	{id: 3, name: "Маша"}
+  ];
+  
+  let user = users.find(item => item.id == 1);
+   alert(user.name); // Вася
+
+   */
+
+   let users = [
+		{id: 1, name: "Вася"},
+		{id: 2, name: "Максим"},
+		{id: 3, name: "Маша"}
+  ];
+  
+  let user = users.find(item => item.id == 2);
+  
+  console.log(user.name); 
+
+
+
+
+  let result = arr.map(function(item, index, array) {
+	// возвращается новое значение вместо элемента
+  });
+  Он вызывает функцию для каждого элемента массива и 
+  возвращает массив результатов выполнения этой функции.
+
+
+Например, здесь мы преобразуем каждый элемент в его длину:
+
+let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length);
+alert(lengths); // 5,7,6
+
+
+let arr = [ 1, 2, 15 ];
+function compare(a, b) {
+	if (a > b) return 1; // если первое значение больше второго
+	if (a == b) return 0; // если равны
+	if (a < b) return -1; // если первое значение меньше второго
+  }
+
+  Метод str.split(delim) разбивает строку на массив 
+  по заданному разделителю delim.
+
+let names = 'Вася, Петя, Маша';
+let arr = names.split(', ');
+
+for (let name of arr) {
+  alert( `Сообщение получат: ${name}.` ); 
+  // Сообщение получат: Вася (и другие имена)
+}
+   
