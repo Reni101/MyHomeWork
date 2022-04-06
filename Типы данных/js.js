@@ -433,7 +433,7 @@ let result = arr.find(function(item, index, array) {
   let user = users.find(item => item.id == 1);
    alert(user.name); // Вася
 
-   */
+ 
 
    let users = [
 		{id: 1, name: "Вася"},
@@ -478,4 +478,28 @@ for (let name of arr) {
   alert( `Сообщение получат: ${name}.` ); 
   // Сообщение получат: Вася (и другие имена)
 }
-   
+Вызов split(s) с пустым аргументом s разбил бы строку на массив букв
+
+Вызов arr.join(glue) делает в точности противоположное split. Он создаёт строку из элементов arr, вставляя glue между ними.
+let arr = ['Вася', 'Петя', 'Маша'];
+let str = arr.join(';'); // объединить массив в строку через ;
+alert( str ); // Вася;Петя;Маша
+  
+
+*/
+/* 
+fun camelize(str) {
+	str.split("-");
+	str.join()
+} */
+
+function camelize(str) {
+	return str.split('-').map(
+		(word, index) => index == 0 ? word : word[0].toUpperCase() + 
+		word.slice(1)
+	  )
+	  .join(''); 
+  }
+
+  console.log(camelize("background-color"))
+  console.log(camelize("list-style-image"))
