@@ -358,10 +358,10 @@ function sumInput(){
 
 
 	let sum = 0;
-  		for (let number of numbers) {
-   		sum += number;
+			for (let number of numbers) {
+				sum += number;
   }
- 	 return sum;
+	   return sum;
 }
 
 console.log(sumInput());
@@ -491,7 +491,7 @@ alert( str ); // Вася;Петя;Маша
 fun camelize(str) {
 	str.split("-");
 	str.join()
-} */
+} 
 
 function camelize(str) {
 	return str.split('-').map(
@@ -503,3 +503,30 @@ function camelize(str) {
 
   console.log(camelize("background-color"))
   console.log(camelize("list-style-image"))
+
+
+*/
+
+let range = {
+	from: 1,
+	to: 5
+};
+
+range[Symbol.iterator] = function () {
+	return {
+		current: this.from,
+		last: this.to,
+
+		next() {
+			if (this.current <= this.last) {
+				return { done: false, value: this.current++ };
+			} else {
+				return { done: true }
+			}
+		}
+	};
+};
+
+for (let num of range) {
+	console.log(num); // 1, затем 2, 3, 4, 5
+}
