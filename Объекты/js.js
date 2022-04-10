@@ -34,7 +34,7 @@ let user = {
   function BigUser() {
 	this.name = "Вася";
 	return { name: "Godzilla" };  //Другими словами, return с объектом возвращает объект,
-	  					 // в любом другом случае конструктор вернёт this.
+							 // в любом другом случае конструктор вернёт this.
   }
   
   let biguser =  new BigUser();
@@ -42,7 +42,7 @@ let user = {
   
   function SmallUser() {
 	this.name = "Вася";
-  	return 15;
+		return 15;
   }
 console.log( new SmallUser());   */
 
@@ -128,23 +128,23 @@ alert(id.description); // id
  let id = Symbol("id");
   
 user[id] = 1; */
-  
+
 let user = {
 	name: "John",
 	money: 1000,
-  	// для хинта равного "string"
+	// для хинта равного "string"
 	toString() {
-	  return `{name: "${this.name}"}`;
+		return `{name: "${this.name}"}`;
 	},
-  	// для хинта равного "number" или "default"
+	// для хинта равного "number" или "default"
 	valueOf() {
-	  return this.money;
+		return this.money;
 	}
-  
-  };
-    alert(user); // toString -> {name: "John"}
- // alert(+user); // valueOf -> 1000
- // alert(user + 500);
+
+};
+alert(user); // toString -> {name: "John"}
+// alert(+user); // valueOf -> 1000
+// alert(user + 500);
 
 
 let john = { name: "John" };
@@ -157,3 +157,32 @@ weakMap.set(key, value)
 weakMap.delete(key)
 weakMap.has(key)
 
+let visitsCountMap = new WeakMap(); // map: пользователь => число визитов
+// увеличиваем счётчик
+function countUser(user) {
+	let count = visitsCountMap.get(user) || 0;
+	visitsCountMap.set(user, count + 1);
+}
+
+let john = { name: "John" };
+countUser(john); //ведём подсчёт посещений
+// пользователь покинул нас
+john = null;
+
+WeakMap – это Map-подобная коллекция, позволяющая 
+использовать в качестве ключей только объекты, и 
+автоматически удаляющая их вместе с соответствующими значениями, как только они становятся недостижимыми иными путями.
+
+WeakSet – это Set-подобная коллекция, которая хранит 
+только объекты и удаляет их, как только они становятся 
+недостижимыми иными путями.
+
+Обе этих структуры данных не поддерживают методы и свойства, 
+работающие со всем содержимым сразу или возвращающие информацию 
+о размере коллекции. Возможны только операции на отдельном элементе 
+коллекции.
+
+WeakMap и WeakSet используются как вспомогательные структуры данных 
+в дополнение к «основному» месту хранения объекта. Если объект удаляется из 
+основного хранилища и нигде не используется, кроме как в качестве ключа 
+в WeakMap или в WeakSet, то он будет удалён автоматически.
