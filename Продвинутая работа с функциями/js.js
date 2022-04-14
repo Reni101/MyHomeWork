@@ -67,3 +67,13 @@ function sumSalaries(department) {
 }
 
 console.log(sumSalaries(company));
+
+function sumAll(...args) {
+    let sum = 0;
+    for(let arg of args) {
+        sum +=arg;
+    }
+    return sum;
+}
+
+console.log(sumAll(3,3,3,3,));
